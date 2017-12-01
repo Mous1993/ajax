@@ -8,12 +8,21 @@
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<!-- css for bootstrap @ bootstrapcdn -->
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<!-- jquery ui for search  -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
 </head>
 <body>
 	<br>
+	<!-- Search Box -->
+	<div class="col-lg-2">
+	    <input type="text" class="form-control" id="searchItems" placeholder="Search">
+	    <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+	</div>
+
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-offset-3 col-lg-6">
+
 			<!-- Panel bootstrap @ bootstrap components -->
 				<div class="panel panel-danger">
 				  <div class="panel-heading">
@@ -50,8 +59,8 @@
 				      </div><!-- /.modal-content -->
 				    </div><!-- /.modal-dialog -->
 				  </div><!-- /.modal -->
-
-				</div>
+				</div> <!-- /.panel -->
+				
 			</div>
 		</div>
 	</div>
@@ -61,6 +70,8 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 	<!-- bootstrap javascript cdn -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<!-- jqueryui javascript  -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	<!-- script for  -->
 	<script >
 		$(document).ready(function()
@@ -141,6 +152,14 @@
 					
 				}	
 
+			});
+
+			/*jquery ui autocomplete*/
+			$( function() 
+			{
+				  $( "#searchItems" ).autocomplete({
+				    source: 'http://localhost:8000/search'
+				  });
 			});
 		});
 	</script>

@@ -37,4 +37,22 @@ class ListController extends Controller
     	$item->save();
     	
     }
+
+    public function search(Request $request)
+    {
+    	$term = $request->term;
+    	$items = Item::where('item','LIKE','%'.$term.'%')->get();
+    	if(count($items) == 0)
+    	{
+    		$searchResult[] = 'No item found';
+    	}
+    	else
+    	{
+    		foreach ($items as $key => $value) 
+    		{
+    			$searchResult[] = $value->item;
+    		}
+    	}
+    	return $searchResult;
+    }
 }

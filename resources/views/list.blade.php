@@ -50,7 +50,7 @@
 				      </div><!-- /.modal-content -->
 				    </div><!-- /.modal-dialog -->
 				  </div><!-- /.modal -->
-				  
+
 				</div>
 			</div>
 		</div>
@@ -70,8 +70,9 @@
 			/*$('.ourItem').click(function(event)
 			{*/
 				var text = $(this).text();
+				var text = $.trim(text);
 				var id = $(this).find('#itemId').val();
-				$("#addItem").val(text);
+				$("#addItem").val(text); 
 				$('#title').text("Edit Item");
 				$('#delete').show();
 				$('#saveChanges').show();
@@ -95,12 +96,20 @@
 			$('#addButton').click(function(event)
 			{
 				var text = $('#addItem').val();
-				/* route , value to be sent , eventhanlde and returned data from controller */
-				$.post('list', {'field' : text, '_token' : $('input[name=_token]').val() }, function(data)
+				if(text == "")
 				{
-					console.log(data);
-					$('#items').load(location.href + ' #items');
-				});
+					alert("please enter the item name . ")
+				}
+				else
+				{
+					/* route , value to be sent , eventhanlde and returned data from controller */
+					$.post('list', {'field' : text, '_token' : $('input[name=_token]').val() }, function(data)
+					{
+						console.log(data);
+						$('#items').load(location.href + ' #items');
+					});
+
+				}
 			});
 
 			$('#delete').click(function(event)
@@ -111,6 +120,26 @@
 					$('#items').load(location.href + ' #items');
 					/*console.log(data);*/
 				});
+
+			});
+
+			$('#saveChanges').click(function(event)
+			{
+				var id = $('#id').val();
+				var value = $('#addItem').val();
+				if (value == "")
+				{
+					alert("please enter the item name . ")
+				}
+				else
+				{
+					$.post('update', {'id' : id,'value' : value, '_token' : $('input[name=_token]').val() }, function(data)
+					{
+						$('#items').load(location.href + ' #items');
+						/*console.log(data);*/
+					});
+					
+				}	
 
 			});
 		});

@@ -28,4 +28,13 @@ class ListController extends Controller
     	$item = Item::where('id', $request->field);
     	$item->delete();
     }
+
+    public function update(Request $request)
+    {
+    	/*return $request->all();*/
+    	$item = Item::find($request->id);
+    	$item->item = $request->value;
+    	$item->save();
+    	
+    }
 }

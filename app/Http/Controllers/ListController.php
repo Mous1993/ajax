@@ -7,6 +7,7 @@ use App\Item;
 
 class ListController extends Controller
 {
+
     public function index()
     {
     	$items = Item::all();
@@ -55,4 +56,5 @@ class ListController extends Controller
     	}
     	return $searchResult;
     }
+
 }

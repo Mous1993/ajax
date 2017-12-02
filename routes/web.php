@@ -15,9 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-/*Route::get('products', function () {
-	return view('');
-});*/
+Route::get('menu', function () {
+	return view('menu');
+});
 
 Route::get('list','ListController@index');
 Route::post('list','ListController@create');
@@ -25,3 +25,7 @@ Route::post('delete','ListController@delete');
 Route::post('update','ListController@update');
 
 Route::get('search','ListController@search');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
